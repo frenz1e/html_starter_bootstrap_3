@@ -1,0 +1,20 @@
+block scriptsBefore
+
+	// build:js scripts/vendor/jquery.min.js
+	script(src='/components/jquery/dist/jquery.min.js')
+	// endbuild
+
+	// build:js scripts/vendor/bootstrap.min.js
+	script(src='/components/bootstrap-sass/assets/javascripts/bootstrap.min.js')
+	// endbuild
+
+	// build:js scripts/vendor.js
+	// bower:js
+	// endbower
+	// endbuild
+
+	// build:js scripts/main.js
+	script(src='scripts/main.js')
+	// endbuild
+
+block scriptsAfter
