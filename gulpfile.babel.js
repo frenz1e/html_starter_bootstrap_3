@@ -17,22 +17,6 @@ gulp.task('views', () => {
     .pipe(reload({stream: true}));
 });
 
-// gulp.task('styles', () => {
-//   return gulp.src('app/styles/*.scss')
-//     .pipe($.plumber())
-//     .pipe($.sourcemaps.init())
-//     .pipe($.sass.sync({
-//       outputStyle: 'expanded',
-//       precision: 10,
-//       includePaths: ['.']
-//     }).on('error', $.sass.logError))
-//     .pipe($.autoprefixer({browsers: ['last 1 version']}))
-//     //.pipe($.csscomb())
-//     .pipe($.sourcemaps.write())
-//     .pipe(gulp.dest('.tmp/styles'))
-//     .pipe(reload({stream: true}));
-// });
-
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.sass')
     .pipe($.plumber())
@@ -43,9 +27,9 @@ gulp.task('styles', () => {
       precision: 10,
       includePaths: ['.']
     }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['last 1 version']}))
+    .pipe($.autoprefixer({browsers: ['last 2 version']}))
     //.pipe($.csscomb())
-    // .pipe($.sourcemaps.write('./'))
+    // .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/styles'))
     .pipe(reload({stream: true}));
 });
@@ -166,7 +150,7 @@ gulp.task('watch', ['views', 'styles', 'fonts'], () => {
   gulp.watch('app/styles/**/*.sass', ['styles']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('app/images/sprite/*.png', ['sprite']);
-  gulp.watch('bower.json', ['wiredep', 'fonts']);
+  // gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 
 gulp.task('watch:dist', () => {
@@ -179,24 +163,6 @@ gulp.task('watch:dist', () => {
   });
 });
 
-// gulp.task('watch:test', () => {
-//   browserSync({
-//     notify: false,
-//     port: 9000,
-//     ui: false,
-//     server: {
-//       baseDir: 'test',
-//       routes: {
-//         '/components': 'components'
-//       }
-//     }
-//   });
-
-//   gulp.watch('test/spec/**/*.js').on('change', reload);
-//   gulp.watch('test/spec/**/*.js', ['lint:test']);
-// });
-
-// inject bower components
 gulp.task('wiredep', () => {
   gulp.src('app/styles/*.sass')
     .pipe(wiredep({
@@ -206,10 +172,10 @@ gulp.task('wiredep', () => {
 
   gulp.src('app/templates/**/*.jade')
     .pipe(wiredep({
-      exclude: ['bootstrap-sass', 'jquery', 'modernizr'],
+      exclude: ['bootstrap-sass'],
       ignorePath: /^(\.\.\/)*\.\./
     }))
-    .pipe(gulp.dest('app/templates'));
+    .pipe(gulp.dest('app'));
 });
 
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {

@@ -1,10 +1,21 @@
 {
-  "name": "bs3 starter",
+  "name": "social",
   "private": true,
   "dependencies": {
-    "modernizr": "*",
-    "jquery": "*",
-    "bootstrap-sass": "~3.3.5"
+    "bootstrap-sass": "~3.3.5",
+    "modernizr": "~2.8.1"
   },
-  "devDependencies": {}
+  "overrides": {
+    "bootstrap-sass": {
+      "main": [
+        "assets/stylesheets/_bootstrap.scss",
+        "assets/fonts/bootstrap/*",
+        "assets/javascripts/bootstrap.js"
+      ]
+    }
+  },
+  "devDependencies": {
+    "chai": "~3.4.0",
+    "mocha": "~2.3.3"
+  }
 }

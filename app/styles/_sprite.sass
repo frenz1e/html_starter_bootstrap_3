@@ -1,0 +1,47 @@
+$bg-x: 0px
+$bg-y: 0px
+$bg-offset-x: 0px
+$bg-offset-y: 0px
+$bg-width: 48px
+$bg-height: 48px
+$bg-total-width: 48px
+$bg-total-height: 48px
+$bg-image: '../images/sprite.png'
+$bg: 0px 0px 0px 0px 48px 48px 48px 48px '../images/sprite.png'
+
+
+@mixin sprite-width($sprite)
+  width: nth($sprite, 5)
+
+@mixin sprite-height($sprite)
+  height: nth($sprite, 6)
+
+@mixin sprite-position($sprite)
+  $sprite-offset-x: nth($sprite, 3)
+  $sprite-offset-y: nth($sprite, 4)
+  background-position: $sprite-offset-x  $sprite-offset-y
+
+@mixin sprite-image($sprite)
+  $sprite-image: nth($sprite, 9)
+  background-image: url(#{$sprite-image})
+
+@mixin sprite($sprite)
+  @include sprite-image($sprite)
+  @include sprite-position($sprite)
+  @include sprite-width($sprite)
+  @include sprite-height($sprite)
+
+
+.icon-bg
+  background-image: url(../images/sprite.png)
+  background-position: 0px 0px
+  width: 48px
+  height: 48px
+  
+  @if variable-exists(bg_h)
+    &:hover
+      +sprite-position($bg_h)
+
+    a:hover &,
+    .active &
+      +sprite-position($bg_h)

@@ -1,6 +1,1 @@
-'use strict';
-
-$(function () {
-    // Code here
-
-});
+console.log('\'Allo \'Allo!');
