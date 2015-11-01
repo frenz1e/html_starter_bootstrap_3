@@ -133,7 +133,7 @@ gulp.task('watch', ['views', 'styles', 'fonts'], () => {
     server: {
       baseDir: ['.tmp', 'app'],
       routes: {
-        '/components': 'components'
+        '/bower_components': 'bower_components'
       }
     }
   });

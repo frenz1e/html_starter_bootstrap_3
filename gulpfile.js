@@ -125,7 +125,7 @@ _gulp2['default'].task('watch', ['views', 'styles', 'fonts'], function () {
     server: {
       baseDir: ['.tmp', 'app'],
       routes: {
-        '/components': 'components'
+        '/bower_components': 'bower_components'
       }
     }
   });
